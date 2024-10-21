@@ -1031,6 +1031,8 @@ export interface paths {
   '/platform/replication/{ref}/sinks': {
     /** Gets replication sinks */
     get: operations['ReplicationSinksController_getSinks']
+    /** Creates a sink */
+    post: operations['ReplicationSinksController_createSink']
   }
   '/platform/replication/{ref}/sources': {
     /** Gets replication sources */
@@ -3168,6 +3170,14 @@ export interface components {
       name: string
       /** @description Publication tables */
       tables: components['schemas']['ReplicationTable'][]
+    }
+    CreateReplicationSinkBody: {
+      /** @description BigQuery dataset id */
+      dataset_id: string
+      /** @description BigQuery project id */
+      project_id: string
+      /** @description BigQuery service account key */
+      service_account_key: string
     }
     CreateRoleBody: {
       admins?: string[]
@@ -13969,6 +13979,29 @@ export interface operations {
         }
       }
       /** @description Failed to get replication sinks */
+      500: {
+        content: never
+      }
+    }
+  }
+  /** Creates a sink */
+  ReplicationSinksController_createSink: {
+    parameters: {
+      path: {
+        /** @description Project ref */
+        ref: string
+      }
+    }
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['CreateReplicationSinkBody']
+      }
+    }
+    responses: {
+      201: {
+        content: never
+      }
+      /** @description Failed to create sink */
       500: {
         content: never
       }
