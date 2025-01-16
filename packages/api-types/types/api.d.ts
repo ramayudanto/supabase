@@ -205,11 +205,11 @@ export interface paths {
   }
   '/platform/feedback/docs': {
     /** Send feedback on docs */
-    post: operations['SendDocsFeedbackController_sendDocsFeedback']
+    post: operations['SendFeedbackController_sendDocsFeedback']
   }
   '/platform/feedback/downgrade': {
     /** Send exit survey to HubSpot */
-    post: operations['SendExitSurveyController_sendExitSurvey']
+    post: operations['SendFeedbackController_sendExitSurvey']
   }
   '/platform/feedback/send': {
     /** Send feedback */
@@ -217,7 +217,7 @@ export interface paths {
   }
   '/platform/feedback/upgrade': {
     /** Send upgrade survey to survey_responses table */
-    post: operations['SendUpgradeSurveyController_sendUpgradeSurvey']
+    post: operations['SendFeedbackController_sendUpgradeSurvey']
   }
   '/platform/integrations': {
     /** Gets user's integrations */
@@ -3378,7 +3378,7 @@ export interface components {
     }
     CreditsTopUpRequestDto: {
       amount: number
-      hcaptcha_token: string
+      hcaptcha_token?: string
       payment_method_id: string
     }
     CreditsTopUpResponseDto: {
@@ -8354,7 +8354,7 @@ export interface operations {
     }
   }
   /** Send feedback on docs */
-  SendDocsFeedbackController_sendDocsFeedback: {
+  SendFeedbackController_sendDocsFeedback: {
     requestBody: {
       content: {
         'application/json': components['schemas']['SendDocsFeedbackBody']
@@ -8373,7 +8373,7 @@ export interface operations {
     }
   }
   /** Send exit survey to HubSpot */
-  SendExitSurveyController_sendExitSurvey: {
+  SendFeedbackController_sendExitSurvey: {
     requestBody: {
       content: {
         'application/json': components['schemas']['SendExitSurveyBody']
@@ -8411,7 +8411,7 @@ export interface operations {
     }
   }
   /** Send upgrade survey to survey_responses table */
-  SendUpgradeSurveyController_sendUpgradeSurvey: {
+  SendFeedbackController_sendUpgradeSurvey: {
     requestBody: {
       content: {
         'application/json': components['schemas']['SendUpgradeSurveyBody']
